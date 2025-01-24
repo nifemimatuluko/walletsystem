@@ -521,6 +521,9 @@ const secret = `Bearer ${process.env.PAYSTACK_SECRET_KEY}`;
     if(event && event.event === 'transfer.failed'){
         console.log('transaction failed')
     }
+         if(event && event.event === 'charge.success'){
+        console.log('nifemi the webhook is working')
+    }
     res.send(200);
 
         
