@@ -6,7 +6,7 @@ const expressfileupload = require('express-fileupload')
 const routes= require('./routes/route')
 const cookieparser= require('cookie-parser')
 require('dotenv').config()
-moongose.connect('mongodb://127.0.0.1:27017/paymentsystems').then(()=>{
+moongose.connect('mongodb+srv://oluwanifemimatuluko:yorimisoke04@cluster0.e2as4y7.mongodb.net/paymentsystemsnew').then(()=>{
     console.log('database connected successfully');
     
 }).catch((err)=>{
