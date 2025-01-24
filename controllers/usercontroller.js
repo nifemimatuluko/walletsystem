@@ -515,8 +515,12 @@ const secret = `Bearer ${process.env.PAYSTACK_SECRET_KEY}`;
           { _id: userId },
           { $set: { balance: sender_current_balance.balance - parseInt(amountsTobedeductedFrombalance) } },
         );
+        
 
     }}
+    if(event && event.event === 'transfer.failed'){
+        console.log('transaction failed')
+    }
     res.send(200);
 
         
