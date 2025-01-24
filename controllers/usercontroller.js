@@ -517,7 +517,7 @@ const hash = crypto.createHmac('sha512', secret).update(JSON.stringify(req.body)
      
   
         
-    } catch (error) {
+    }}catch (error) {
         console.log(error.message);
         
     
