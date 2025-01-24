@@ -492,7 +492,7 @@ const params = JSON.stringify({
     }
         
     }
-}
+
 const webhookurl = async(req,res)=>{
     const crypto = require('crypto');
 const secret = process.env.PAYSTACK_SECRET_KEY;
