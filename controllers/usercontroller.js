@@ -494,8 +494,7 @@ const params = JSON.stringify({
     }
 }
 const webhookurl = async(req,res)=>{
-    try {
-        const crypto = require('crypto');
+    const crypto = require('crypto');
 const secret = process.env.PAYSTACK_SECRET_KEY;
 const hash = crypto.createHmac('sha512', secret).update(JSON.stringify(req.body)).digest('hex');
     if (hash == req.headers['x-paystack-signature']) {
@@ -508,18 +507,58 @@ const hash = crypto.createHmac('sha512', secret).update(JSON.stringify(req.body)
 
     require('dotenv').config();
     
-     
+         const nodemailer = require('nodemailer')
+         const transporter=  nodemailer.createTransport({
+          pool: true,
+          host: "smtp.gmail.com",
+          port: 465,
+          secure: true, // use TLS
+          auth: {
+            user: process.env.gmailusername,
+            pass: process.env.gmailpassword,
+          },
+        });
+        const ShortUniqueid = require('short-unique-id');
+
+        const numIds = event.data.metadata.custom_fields[2] // Adjust this value to generate the desired number of IDs
+        
+        const uid = new ShortUniqueid({ length: 10 }); // Create an instance with desired ID length
+        
+        let uniqueIds = [];
+        for (let i = 0; i < numIds; i++) {
+          uniqueIds.push(uid.randomUUID()); // Generate and push IDs to the array
+        }
+  //  console.log(findprices);
+  let token =uniqueIds
+  console.log(token);
        
+       
+        
+        const now = new Date();
+        const info = await transporter.sendMail({
+          from: '"nifemimatuluko@gmail.com', // sender address
+          to: ` ${event.data.customer.email}`, // list of receivers
+          subject: `Hello ${event.data.customer.name} your payments was succesful thanks for trusting us`, // Subject line
+          text: "order in the bag", // plain text body
+          text: ` here's Your Token(s)${token} present it at the event it would be used to verify your identity`,
+          
          
+        });
+        
+        console.log("Message sent: %s", info.messageId);
+    const checkoutmodel = require('../models/checkoutmodel')
+    await checkoutmodel.create({
+    // i.e name:event.customers or event.data
+     checkoutemail:`${event.data.customer.email}`,
+     name:`${event.data.metadata.custom_fields[0]}`,
+     token:token,
+     amount:`${event.data.metadata.custom_fields[1]}`,
+     quantity:`${event.data.metadata.custom_fields[2]}`,
+     success: true,
+    })
+    }    
     }
     res.sendStatus(200);
 
-     
-  
-        
-    }}catch (error) {
-        console.log(error.message);
-        
-    
 }
 module.exports={getregisterpage,postregisterroute,getloginpage,postlogin,getdashboard,deposit,logout,gettransferpage,posttransferpage,callback,getwithdraw,postwithdraw,webhookurl}
