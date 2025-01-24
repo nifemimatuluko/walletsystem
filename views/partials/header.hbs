@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/home.css">
+       <!-- =====navbar styling CSS ===== -->
+   <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    {{!-- <div class="homenavbar">
+    
+    
+    <p class="logout"> <a href="/events">create an event </a></p>
+   <p><a href="/login">Login/register </a></p>
+    <p > <a href="/discover">discover event </a></p>
+     <p > <a href="/logout">logout </a></p>
+    <h1>{{currentUser.email}}</h1>
+    
+    </div> --}}
+
+      <header class="header">
+        <nav class="navbar">
+            <a href="/" class="nav-logo"> Sendafrica.   </h1></a>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="/" class="nav-link">Home</a>
+                </li>
+               
+                <li class="nav-item">
+                    <a href="/register" class="nav-link">Register</a>
+                </li>
+                 {{!-- <li class="nav-item">
+                    <a href="/events" class="nav-link">Create Event</a>
+                </li> --}}
+                 {{!-- <li class="nav-item">
+                    <a href="/pricing" class="nav-link">Pricing</a>
+                </li> --}}
+                {{!-- {{if currentUser}} --}}
+                  {{#if currentUser}}
+                <li class="nav-item">
+                    <a href="/logout" class="nav-link">Logout</a>
+                </li>
+                 {{/if}}
+                {{!-- {{#else}} --}}
+                 {{#unless currentUser}}
+   
+                     <li class="nav-item">
+                    <a href="/login" class="nav-link">Login</a>
+                    
+                    {{!-- {{/else}} --}}
+                </li>
+            {{/unless}}
+               
+                 
+                {{!-- {{/if}} --}}
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+<script>
+    window.onscroll = function() {myFunction()};
+
+var navbar = document.querySelector(".header");
+var sticky = navbar.offsetTop;
+
+function myFunction() {
+  if (window.scrollY >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
+</script>
+
+
+
+    <script src="/script.js"></script>
+
+         
+</body>
+</html>

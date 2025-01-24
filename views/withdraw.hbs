@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post" action="/withdraw" id="bankForm">
+    {{!-- <label for="reason">Reason:</label><br>
+    <input type="text" id="reason" name="reason"><br><br>
+
+    <label for="amount">Amount:</label><br>
+    <input type="number" id="amount" name="amount"><br><br>
+
+
+
+
+
+<br><br><br>
+ <label for="account-number">Account Number:</label>
+        <input type="text" id="account-number" required>
+        
+        <label for="bank-code">Bank Code:</label>
+        <input type="text" id="bank-code" required>
+         <div id="result"></div>
+    <input   type="submit" value="Submit"> --}}
+     <h1>Resolve Bank Account</h1>
+    
+    <!-- Form to enter account number and bank code -->
+    <label for="account_number">Account Number:</label>
+    <input type="text" id="account_number" placeholder="Enter account number" required><br><br>
+    
+    <label for="bank_code">Bank Code:</label>
+    <input type="text" id="bank_code" placeholder="Enter bank code" required><br><br>
+    
+    <button onclick="resolveBank()" >Resolve Bank Account</button>
+    
+    <!-- Display the result -->
+    <div class="result" id="result"></div>
+  </form>
+  
+    <script>
+        
+        // Function to handle API request
+async function resolveBank(event) {
+     event.preventDefualt();
+     
+    
+    const accountNumber = document.getElementById("account_number").value;
+    const bankCode = document.getElementById("bank_code").value;
+
+    if (!accountNumber || !bankCode) {
+        alert("Please fill in both fields.");
+        return;
+    }
+
+    // Set up the API URL
+    const url = `https://api.paystack.co/bank/resolve?account_number=${accountNumber}&bank_code=${bankCode}`;
+    
+    try {
+        // Make the API request
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Authorization':  `Bearer ${process.env.PAYSTACK_SECRET_KEY}`  // Replace with your actual secret key
+            }
+        });
+
+        // Handle non-OK responses (e.g., 404, 500)
+        if (!response.ok) {
+            throw new Error('API request failed: ' + response.statusText);
+        }
+
+        // Parse the JSON response
+        const data = await response.json();
+
+        // Check if the response was successful
+        if (data.status) {
+            // Display the result in the HTML
+            document.getElementById("result").innerHTML = `
+                <p><strong>Account Name:</strong> ${data.data.account_name}</p>
+                <p><strong>Bank:</strong> ${data.data.bank.name}</p>
+                <p><strong>Account Number:</strong> ${data.data.account_number}</p>
+            `;
+        } else {
+            // Handle errors or unsuccessful responses
+            document.getElementById("result").innerHTML = `<p style="color:red;">Error: ${data.message}</p>`;
+        }
+    } catch (error) {
+        // Handle network errors or any issues with the API request
+        document.getElementById("result").innerHTML = `<p style="color:red;">An error occurred: ${error.message}</p>`;
+    }
+}
+const form = document.getElementById('bankForm');
+form.addEventListener('submit', resolveBank);
+
+    </script>
+</body>
+</html>

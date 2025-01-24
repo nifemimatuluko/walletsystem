@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shortlink</title>
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: rgb(22, 22, 168);
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 5px;
+      width: 40%;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+    .error {
+      color: red;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Login</h1>
+    <form id="registrationForm" method="post" action="/login">
+      
+      <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" >
+        <span id="emailError" class="error"></span>
+      </div>
+
+      <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" >
+        <span id="passwordError" class="error"></span>
+      </div>
+
+     
+      <button type="submit">Login</button>
+        <p><a href="/register">do not have an account ? Register</a></p>
+    </form>
+  </div>
+
+  {{!-- <script src="/path/to/flash.min.js">
+  let successMessage = "{{success}}"
+    let errorMessage = "{{error}}"
+    if(successMessage){
+        window.FlashMessage.success('This is a successs flash message !');
+    }
+    if(errorMessage){
+        window.FlashMessage.error('this is teh error message')
+    }
+  </script> --}}
+ {{!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+ <script>
+    let successMessage = "{{success}}"
+    let errorMessage = "{{error}}"
+
+    if (successMessage) {
+      Swal.fire({
+        icon: "success",
+        title: "Success",
+        text: successMessage,
+      });
+    }
+    if (errorMessage) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: errorMessage,
+      });
+    }
+     window.addEventListener('DOMContentLoaded', () => {
+  // Get a reference to the spinner container
+  const spinnerContainer = document.querySelector('.spinner-container');
+
+  // Hide the spinner container after a delay (adjust delay as needed)
+  setTimeout(() => {
+    spinnerContainer.style.display = 'none';
+  }, 1000); // Hide spinner after 2 seconds
+});
+
+  </script> --}}
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+    <script>
+        var notyf = new Notyf();
+        let successMessage = "{{success}}"
+    let errorMessage = "{{error}}"
+
+// Display an error notification
+if(errorMessage){
+notyf.error(errorMessage);
+}
+
+
+// Display a success notification
+if(successMessage){
+notyf.success(successMessage)
+}
+
+    </script>
+  {{!-- <script>
+    const form = document.getElementById('registrationForm');
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const phoneNumber = document.getElementById('phoneNumber').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+
+      // Basic input validation (you can add more robust validation)
+      let isValid = true;
+
+      // Phone number validation (basic check, you might need a more robust library)
+      if (phoneNumber === '') {
+        document.getElementById('phoneNumberError').textContent = 'Phone number is required.';
+        isValid = false;
+      } else {
+        document.getElementById('phoneNumberError').textContent = '';
+      }
+
+      // Email validation (basic check, you might need a more robust library)
+      const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+      if (!emailRegex.test(email)) {
+        document.getElementById('emailError').textContent = 'Invalid email address.';
+        isValid = false;
+      } else {
+        document.getElementById('emailError').textContent = '';
+      }
+
+      if (password === '') {
+        document.getElementById('passwordError').textContent = 'Password is required.';
+        isValid = false;
+      } else {
+        document.getElementById('passwordError').textContent = '';
+      }
+
+      if (confirmPassword === '') {
+        document.getElementById('confirmPasswordError').textContent = 'Confirm Password is required.';
+        isValid = false;
+      } else if (password !== confirmPassword) {
+        document.getElementById('confirmPasswordError').textContent = 'Passwords do not match.';
+        isValid = false;
+      } else {
+        document.getElementById('confirmPasswordError').textContent = '';
+      }
+
+      if (isValid) {
+        // Handle form submission (e.g., send data to server)
+        console.log('Form submitted:', phoneNumber, email, password);
+        // You can add code here to send data to your server using AJAX or Fetch API
+      }
+    });
+  </script> --}}
+</body>
+</html>

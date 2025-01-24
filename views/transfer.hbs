@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>transfer page</title>
+</head>
+<body>
+    <a href="/dashboard" style="color: rgb(9, 165, 219);text-decoration:none">Go back</a>
+    <h1 style="color:rgb(9, 165, 219)">Transfer to users with just thier phonenumbers</h1>
+    <form action="/transfer" method="post">
+    <div>
+
+  
+     
+     <h2> Phonenumber:</h2>
+     <br>
+   <input type="text" name="phonenumber" placeholder="Input user's phonenumber">
+     <br><br>
+   <h2>Amount:</h2>  
+   <br>
+   <input type="text" name="amount" placeholder="input the amount to be sent">
+   <br><br>
+
+   
+   <h2>Input your password </h2>
+   <br>
+   <input type="password"  name="password">
+   <br><br>
+   <button type="submit" style="color: white;background-color:rgb(9, 165, 219)">Transfer</button>
+     </div>
+
+    </form>
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+   <script src="https://js.paystack.co/v1/inline.js"></script>
+ <script>
+    let successMessage = "{{success}}"
+    let errorMessage = "{{error}}"
+
+    if (successMessage) {
+      Swal.fire({
+        icon: "success",
+        title: "Success",
+        text: successMessage,
+      });
+    }
+    if (errorMessage) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: errorMessage,
+      });
+    }
+    </script>
+  
+
+</body>
+</html>

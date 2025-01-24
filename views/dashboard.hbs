@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .balance{
+            background-color: rgb(9, 165, 219);
+            color: whitesmoke;
+            text-align: center;
+            width: 50%;
+            height: 30%;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+       body{
+        background-color: whitesmoke;
+       }.userstranfer{
+        text-decoration: none;
+        color: white;
+        background-color: rgb(9, 165, 219);
+        text-align: center;
+            width: 70%;
+            height: 15%;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+       }
+    </style>
+    
+    <h3 > <a href="/logout" style="color: rgb(9, 165, 219);text-decoration:none;">Logout</a></h3>
+    <h1 name="email"  > Hey, {{checkUser.email}} </h1>
+    <h3>Good day</h3>
+    <h1>This is your Balance: <div class="balance">₦{{checkUser.balance}}</div> </h1> 
+ 
+ 
+ <form action="/dashboard" method="post">
+ <h1 >Fund your wallet</h1>
+ <input type="number" name="deposit">
+ 
+ <button type="submit" style="color: white;background-color:rgb(9, 165, 219);border-color:white">Deposit</button>
+ </form>
+ <br><br>
+ <a href="/transfer" class="userstranfer">Transfer to a User</a>
+ <br><br>
+ <a href="/withdraw" class="userstranfer">Transfer to a Bank account</a>
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+    <script>
+        var notyf = new Notyf();
+        let successMessage = "{{success}}"
+    let errorMessage = "{{error}}"
+
+// Display an error notification
+if(errorMessage){
+notyf.error(errorMessage);
+}
+
+
+// Display a success notification
+if(successMessage){
+notyf.success(successMessage)
+}
+const registrationForm = document.getElementById('registrationForm')
+
+    </script>
+</body>
+</html>

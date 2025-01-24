@@ -1,0 +1,174 @@
+<style>
+  
+   
+        .spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed; /* Keep the spinner centered on the screen */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; /* Cover the entire viewport initially */
+  background-color: whitesmoke; /* Semi-transparent background */
+  z-index: 999; /* Ensure the spinner is on top of other content */
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #f3f3f3; /* Border color */
+  border-radius: 50%;
+  border-top-color: orangered; /* Animation color */
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.offer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: 17vh;
+  background-color: rgb(38, 38, 231);
+  color: white;
+  font-size: 20px;
+  font-weight: bolder;
+}
+    
+</style>
+<body>
+   <div class="spinner-container">
+    <div class="spinner"></div>
+  </div>
+    {{>header}}
+    <marquee behavior="smooth" direction="" style="font-size: 20px; color:rgb(38, 38, 231);font-weight:bold">Easy way to Send and Receive money  on the internet </marquee>
+    {{!-- <div class="homenavbar">
+    <h1 >tickety,  hello {{currentUser.name}}</h1>
+    
+    <p class="logout"> <a href="/events">create an event </a></p>
+    
+    <p> <a href="/login">Login/Register</a></p>
+    <p > <a href="/discover">discover event </a></p>
+       <p> <a href="/logout">Logout</a></p>
+    <h1>{{currentUser.email}}</h1>
+    
+    </div> --}}
+    {{#if currentUser}}
+    <h1 style="color: orangered;">Hey, {{currentUser.name}}</h1>
+    {{/if}}
+    <h2 class="homepageintro">SENDING & RECEIVING MONEY HAS NEVER BEEN EASIER.
+A platform for you to SEND,  and RECEIVE MONEY USING YOUR PHONE NUMBER</h2>
+<br>
+  <div class="homebox"><a href="/register">Create an Account now</a></div>
+  <br><br>
+   <div class="homeimg"><img src="https://img.freepik.com/free-photo/close-up-young-handsome-man-isolated_273609-37393.jpg" alt="" ></div> 
+   <br>
+    <h2 class="homepageintro">
+   Some of What we offer 
+     
+</h2>
+<div style="width: 30%; height:5px; background-color:rgb(38, 38, 231); display:flex; justify-content:center;align-items:center;margin:0 auto"></div>
+ <br>
+ <h2 class="offer">
+      low transactions fees
+</h2>
+ <br>
+<h2 class="offer">
+      Payments secured by paystack
+</h2>
+ <br>
+<h2 class="offer">
+      Faster Payouts
+</h2>
+ <br>
+<h2 class="offer">
+      View your transaction history with ease
+</h2>
+ <br>
+<h2 class="offer">
+      withdraw your money anytime from anywhere in the world
+</h2>
+<br>
+<h2 class="homepageintro">
+   Send and receive money right from your mobile phone 
+     
+</h2>
+<div style="width: 30%; height:5px; background-color:rgb(38, 38, 231); display:flex; justify-content:center;align-items:center;margin:0 auto"></div>
+<br>
+     <div class="homeimg"><img src="https://img.freepik.com/free-photo/close-up-young-handsome-man-isolated_273609-37393.jpg" alt="" ></div> 
+     
+       {{!-- <div class="homeimg"><img src="https://media.premiumtimesng.com/wp-content/files/2023/04/image1_1.jpeg" alt="" ></div> 
+         <div class="homeimg"><img src="https://media.premiumtimesng.com/wp-content/files/2023/04/image1_1.jpeg" alt="" ></div>  --}}
+  
+   {{!-- {{#each products}}
+   <h1 style="color: orangered;">{{eventname}}</h1>
+
+   <div style="display: flex; justify-content:center; align-items:center  overflow-y: scroll; "><img  src="{{images}}" alt="" width="300"></div> 
+
+    <div style="text-align:center; display:flex; justify-content:center;align-items:center;background-color:orangered "><a style="text-decoration: none; color:white" href="discover/{{eventname}}">get tickets</a></div>
+     
+   {{/each}} --}}
+
+<br>
+
+   {{!-- {{>footer}} --}}
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".nav-menu");
+
+hamburger.addEventListener("click", mobileMenu);
+
+function mobileMenu() {
+    hamburger.classList.toggle("active");
+    navMenu.classList.toggle("active");
+}
+
+
+// when we click on hamburger icon its close 
+
+const navLink = document.querySelectorAll(".nav-link");
+
+navLink.forEach(n => n.addEventListener("click", closeMenu));
+
+function closeMenu() {
+    hamburger.classList.remove("active");
+    navMenu.classList.remove("active");
+}
+
+</script>
+ <script>
+    let successMessage = "{{success}}"
+    let errorMessage = "{{error}}"
+
+    if (successMessage) {
+      Swal.fire({
+        icon: "success",
+        title: "Success",
+        text: successMessage,
+      });
+    }
+    if (errorMessage) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: errorMessage,
+      });
+    }
+        window.addEventListener('DOMContentLoaded', () => {
+  // Get a reference to the spinner container
+  const spinnerContainer = document.querySelector('.spinner-container');
+
+  // Hide the spinner container after a delay (adjust delay as needed)
+  setTimeout(() => {
+    spinnerContainer.style.display = 'none';
+  }, 1000); // Hide spinner after 2 seconds
+});
+  </script>
+</body>
+</html>

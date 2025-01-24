@@ -1,0 +1,261 @@
+body{
+  
+    /* background: rgb(34,193,195);
+    background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(121,32,153,1) 86%); */
+    background-attachment: fixed;
+    /* background-repeat: repeat-x;
+     background-color: white; */
+     background-color: whitesmoke;
+    color: rgb(38, 38, 231);
+    margin:0;
+    font-family: 'Poppins', sans-serif; 
+}
+
+#form{
+    width:400px;
+    margin:20vh auto 0 auto;
+    background-color: whitesmoke;
+    border-radius: 5px;
+    padding:30px;
+}
+
+h1{
+    text-align: center;
+    color: white;
+}
+
+#form button{
+    background-color: orangered;
+    color:white;
+    border: 1px solid orangered;
+    border-radius: 5px;
+    padding:10px;
+    margin:20px 0px;
+    cursor:pointer;
+    font-size:20px;
+    width:100%;
+}
+
+.input-group{
+    display:flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.input-group input{
+    border-radius: 5px;
+    font-size:20px;
+    margin-top:5px;
+    padding:10px;
+    border:1px solid rgb(34,193,195) ;
+}
+
+.input-group input:focus{
+    outline:0;
+}
+
+.input-group .error{
+    color:rgb(242, 18, 18);
+    font-size:16px;
+    margin-top: 5px;
+}
+
+.input-group.success input{
+    border-color: #0cc477;
+}
+
+.input-group.error input{
+    border-color:rgb(206, 67, 67);
+}
+
+
+
+
+/*event dashboard css*/
+
+/* General styles */
+.product-page {
+    padding: 2rem;
+    background-color: white; /* Light background for better contrast */
+  }
+  
+  /* Container for better organization */
+  .form-container {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 1.5rem;
+    margin: 0 auto; /* Center the form horizontally */
+    max-width: 700px; /* Set a maximum width for responsiveness */
+  }
+  
+  /* Input fields and labels */
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  /* Set all input fields (including select and textarea) to have the same width */
+  .form-control,
+  select,
+  textarea {
+    width: 90%; /* Make all inputs take up full width */
+    padding: 0.75rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  }
+  
+  .form-control:focus {
+    outline: none; /* Remove default outline */
+    border-color: #2196f3;
+  }
+  
+  label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+  }
+  
+  /* Button */
+  .btn-primary {
+    background-color: orangered;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out; /* Add smooth hover effect */
+  }
+  
+  .btn-primary:hover {
+    background-color: #1780f3; /* Darken button on hover */
+  }
+  
+  /* File input */
+  .form-control[type="file"] {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Add a title for the form */
+  .product-title {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+ .logout a{
+  float: right;
+  text-decoration: none;
+  color:  orangered;
+  font-size: 30px;
+  }
+#date{
+    display: flex;
+    justify-content: space-evenly;
+}
+h1 {
+    text-align: center;
+  }
+  
+  fieldset {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  legend {
+    font-weight: bold;
+    padding: 5px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  textarea,
+  select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    background-color: orangered;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+   
+    border-radius: 20px}
+    /* .detailspage{
+        font-size: 10px;
+        display: flex;
+    } */
+
+    .homepageeventslink{
+    text-decoration: none;
+    color: orangered;
+    }
+.name{
+      color: orangered;
+ }
+ .transaction{
+  text-decoration: none;
+  color: rgb(38, 38, 231);
+  font-size: 15px;
+ }
+ .pro-qty {
+  display: flex; /* Arrange buttons and input horizontally */
+  width: 10%;
+  align-items: center; /* Vertically center buttons and input */
+}
+
+.qtybtn {
+  display: inline-block; /* Allow text and borders around buttons */
+  padding: 5px 10px; /* Add some space inside the buttons */
+  border: 1px solid #ddd; /* Light gray border */
+  border-radius: 3px; /* Rounded corners */
+  cursor: pointer; /* Indicate clickable behavior */
+  margin: 0 5px; /* Add some spacing between buttons */
+}
+
+.qtybtn a {
+  color: inherit; /* Inherit color from button element */
+  text-decoration: none; /* Remove default link underline */
+  font-weight: bold; /* Make buttons appear more prominent */
+}
+
+
+/* Choose your preferred color scheme for the buttons: */
+
+/* Option 1: Green and Red (positive/negative) */
+.dec.qtybtn {
+  background-color: #e74c3c; /* Red for decrease */
+}
+
+.inc.qtybtn {
+  background-color: #2ecc71; /* Green for increase */
+}
+
+/* Option 2: Blue and Gray (primary/secondary) */
+.dec.qtybtn {
+  background-color: #3498db; /* Blue for decrease */
+}
+
+.inc.qtybtn {
+  background-color: #7f8c8d; /* Gray for increase */
+}
+
+/* Option 3: Custom Colors */
+.dec.qtybtn {
+  background-color: white;
+}
+
+.inc.qtybtn {
+  background-color: white;
+}
