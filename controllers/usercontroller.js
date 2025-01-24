@@ -502,17 +502,18 @@ const hash = crypto.createHmac('sha512', secret).update(JSON.stringify(req.body)
     const event = req.body;
     // Do something with event
          const userId=req.user
-        console.log(userId)
+       
     if (event && event.event === 'transfer.success') {
     console.log('transfer api is working');
-         let sender_current_balance = await userModel.findOne({ recipient_code:event.recipient_code});
+         console.log(event.recipient_code)
+        //  let sender_current_balance = await userModel.findOne({ recipient_code:event.recipient_code});
     
-        // Update the Sender's balance
-        const amountsTobedeductedFrombalance = event.data.amount
-        await userModel.updateOne(
-          { recipient_code: event.recipient_code },
-          { $set: { balance: sender_current_balance.balance - parseInt(amountsTobedeductedFrombalance) } },
-        );
+        // // Update the Sender's balance
+        // const amountsTobedeductedFrombalance = event.data.amount
+        // await userModel.updateOne(
+        //   { recipient_code: event.recipient_code },
+        //   { $set: { balance: sender_current_balance.balance - parseInt(amountsTobedeductedFrombalance) } },
+        // );
 
         
     // console.log(event.data.customer.email);
