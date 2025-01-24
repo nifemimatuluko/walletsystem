@@ -489,7 +489,7 @@ const params = JSON.stringify({
         }
         
     } catch (error) {
-        console.log(error.message);
+    }
         
     }
 }
