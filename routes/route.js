@@ -14,5 +14,5 @@ routes.post('/transfer',checkUser, posttransferpage)
 routes.get('/callback',checkUser,callback)
 routes.get('/withdraw', checkUser,getwithdraw)
 routes.post('/withdraw',checkUser,postwithdraw)
-routes.post('/webhookurl',webhookurl)
+routes.post('/webhookurl',checkUser,webhookurl)
 module.exports=routes
