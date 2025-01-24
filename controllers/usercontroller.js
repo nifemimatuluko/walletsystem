@@ -503,7 +503,7 @@ const hash = crypto.createHmac('sha512', secret).update(JSON.stringify(req.body)
     // Do something with event
     if (event && event.event === 'charge.success') {
     console.log('payment was succesful nifemi');
-    console.log(event.data.customer.email);
+    // console.log(event.data.customer.email);
 
     require('dotenv').config();
     
