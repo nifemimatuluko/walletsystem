@@ -497,38 +497,28 @@ const webhookurl = async(req,res)=>{
     try {
         const crypto = require('crypto');
 const secret = process.env.PAYSTACK_SECRET_KEY;
-// Using Express
-
-    //validate event
-    const hash = crypto.createHmac('sha512', secret).update(JSON.stringify(req.body)).digest('hex');
+const hash = crypto.createHmac('sha512', secret).update(JSON.stringify(req.body)).digest('hex');
     if (hash == req.headers['x-paystack-signature']) {
     // Retrieve the request's body
     const event = req.body;
-    const userId=req.user.id
-    // Do something with event  
-    if (event && event.event === 'transfer.success') {
-        let sender_current_balance = await userModel.findById(userId);
+    // Do something with event
+    if (event && event.event === 'charge.success') {
+    console.log('payment was succesful nifemi');
+    console.log(event.data.customer.email);
+
+    require('dotenv').config();
     
-        // Update the Sender's balance
-        const amountsTobedeductedFrombalance = event.data.amount
-        await userModel.updateOne(
-          { _id: userId },
-          { $set: { balance: sender_current_balance.balance - parseInt(amountsTobedeductedFrombalance) } },
-        );
-        
-
-    }}
-    if(event && event.event === 'transfer.failed'){
-        console.log('transaction failed')
+     
+       
+         
     }
-         if(event && event.event === 'charge.success'){
-        console.log('nifemi the webhook is working')
-    }
-    res.send(200);
+    res.sendStatus(200);
 
+     
+  
         
     } catch (error) {
-        console.log();
+        console.log(error.message);
         
     }
 }
