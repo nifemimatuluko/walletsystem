@@ -520,6 +520,6 @@ const hash = crypto.createHmac('sha512', secret).update(JSON.stringify(req.body)
     } catch (error) {
         console.log(error.message);
         
-    }
+    
 }
 module.exports={getregisterpage,postregisterroute,getloginpage,postlogin,getdashboard,deposit,logout,gettransferpage,posttransferpage,callback,getwithdraw,postwithdraw,webhookurl}
