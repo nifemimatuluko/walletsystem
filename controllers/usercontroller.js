@@ -496,7 +496,7 @@ const params = JSON.stringify({
 const webhookurl = async(req,res)=>{
     try {
         const crypto = require('crypto');
-const secret = `Bearer ${process.env.PAYSTACK_SECRET_KEY}`;
+const secret = process.env.PAYSTACK_SECRET_KEY;
 // Using Express
 
     //validate event
