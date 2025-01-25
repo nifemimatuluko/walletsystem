@@ -511,7 +511,7 @@ const hash = crypto.createHmac('sha512', secret).update(JSON.stringify(req.body)
         // Update the Sender's balance
         const amountsTobedeductedFrombalance = event.data.amount
         await userModel.updateOne(
-          { _id:sender_current_balance.id },
+          { _id:event.reason},
           { $set: { balance: sender_current_balance.balance - parseInt(amountsTobedeductedFrombalance) } },
         ); 
 
