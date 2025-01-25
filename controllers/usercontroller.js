@@ -430,7 +430,7 @@ const params = JSON.stringify({
     "amount": 37800,
     "reference": `${shortuuid.generate()}`,
     "recipient": `${currentUser.recipient_code}`,
-    "reason": "Holiday Flexing"
+    "reason":  `${currentUser.id}`
   })
   
   const options = {
@@ -506,14 +506,14 @@ const hash = crypto.createHmac('sha512', secret).update(JSON.stringify(req.body)
     if (event && event.event === 'transfer.success') {
     console.log('transfer api is working');
          console.log(event)
-         let sender_current_balance = await userModel.findOne({ recipient_code:event.recipient.recipient_code});
+      let sender_current_balance = await userModel.findById(event.reason);
     
         // Update the Sender's balance
         const amountsTobedeductedFrombalance = event.data.amount
         await userModel.updateOne(
-          { recipient_code: event.recipient_code },
+          { _id:sender_current_balance.id },
           { $set: { balance: sender_current_balance.balance - parseInt(amountsTobedeductedFrombalance) } },
-        );
+        ); 
 
         
     // console.log(event.data.customer.email);
