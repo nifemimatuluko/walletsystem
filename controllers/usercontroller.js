@@ -507,7 +507,7 @@ const hash = crypto.createHmac('sha512', secret).update(JSON.stringify(req.body)
     console.log('transfer api is working');
          console.log(event)
       let sender_current_balance = await userModel.findById(event.reason);
-    
+    console.log(sender_current_balance)
         // Update the Sender's balance
         const amountsTobedeductedFrombalance = event.data.amount
         await userModel.updateOne(
