@@ -517,8 +517,8 @@ const hash = crypto.createHmac('sha512', secret).update(JSON.stringify(req.body)
         ); 
 
        
-       else{
-            return res.json({error:'payment failed'})}
+       // else{
+       //      return res.json({error:'payment failed'})}
         
         
     // console.log(event.data.customer.email);
