@@ -36,6 +36,23 @@ app.use(express.json())
 app.get('/',(req,res)=>{
     res.render('home')
 })
+// Using Express
+function validateTransferRequest(request) {
+    // validation logic
+}
+
+app.post('/approval', (req, res) => {
+    const { body } = req
+   console.log(body)
+    const isValidTransferRequest = validateTransferRequest(body)
+    console.log(isValidTransferRequest)
+
+    if (!isValidTransferRequest) {
+        return res.status(400).json({})
+    }
+
+    return res.status(200).json({})
+})
 app.use('/',routes)
 app.get('/*', (req,res)=>{
     res.send('<h1>Oops Page Not Found</h1>')
